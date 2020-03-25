@@ -8,7 +8,7 @@
 //     render() { 
 //         return ( 
 //             <Container>
-        
+
 //         <Content />
 //         <Footer>
 //           <FooterTab>
@@ -30,7 +30,7 @@
 //          );
 //     }
 // }
- 
+
 // export default Tab1;
 
 
@@ -43,57 +43,57 @@ import CreateEvent from '../FooterPages/CreateEvent';
 
 export default class Tab1 extends React.Component {
   constructor(props) {
-   super(props)
-   this.state = {
-     loading: true,
-     index: 0, // tab index
-   }
+    super(props)
+    this.state = {
+      loading: true,
+      index: 0, // tab index
+    }
   }
 
   switchScreen(index) {
-     this.setState({index: index})
+    this.setState({ index: index })
   }
-  
+
   render() {
     const { index } = this.state;
     let AppComponent = null;
 
     if (index == 0) {
       AppComponent = MyEvents
-    } else if(index == 1) {
+    } else if (index == 1) {
       AppComponent = JoinEvents
-    } else if(index == 2) {
+    } else if (index == 2) {
       AppComponent = CreateEvent
-    }  else {
+    } else {
       AppComponent = Home
     }
 
 
     return (
       <Root>
-      <Container>
-        <Content>
-          <AppComponent />
-        </Content>
-        <Footer>
-          <FooterTab>
-            <Button vertical active={index === 0} onPress={() => this.switchScreen(0)}>
-              <Icon name="apps" />
-              <Text>My Events</Text>
-            </Button>
-            <Button vertical active={index === 1} onPress={() => this.switchScreen(1)}>
-              <Icon name="paper" />
-              <Text>Join Events</Text>
-            </Button>
-            <Button vertical active={index === 2} onPress={() => this.switchScreen(2)}>
-              <Icon active name="add" />
-              <Text>Create Event</Text>
-            </Button>
-            
-          </FooterTab>
-        </Footer>
-      </Container>
-    </Root>
+        <Container>
+          <Content>
+            <AppComponent navigation={this.props.navigation} />
+          </Content>
+          <Footer>
+            <FooterTab>
+              <Button vertical active={index === 0} onPress={() => this.switchScreen(0)}>
+                <Icon name="apps" />
+                <Text>My Events</Text>
+              </Button>
+              <Button vertical active={index === 1} onPress={() => this.switchScreen(1)}>
+                <Icon name="paper" />
+                <Text>Join Events</Text>
+              </Button>
+              <Button vertical active={index === 2} onPress={() => this.switchScreen(2)}>
+                <Icon active name="add" />
+                <Text>Create Event</Text>
+              </Button>
+
+            </FooterTab>
+          </Footer>
+        </Container>
+      </Root>
     );
   }
 }

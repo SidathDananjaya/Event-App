@@ -5,13 +5,13 @@ import Tab2 from './HomeTabs/tab2';
 import Tab3 from './HomeTabs/tab3';
 
 //import react in our code.
-import { Image, TouchableOpacity  } from 'react-native';
+import { Image, TouchableOpacity } from 'react-native';
 //import all the components we are going to use.
 import Menu, { MenuItem, MenuDivider } from 'react-native-material-menu';
 //import menu and menu item
 
 class TabContainer extends Component {
-  
+
   _menu = null;
   setMenuRef = ref => {
     this._menu = ref;
@@ -40,63 +40,63 @@ class TabContainer extends Component {
     this.props.option4Click();
   };
 
-    render() { 
-      const {navigate} = this.props.navigation;
-        return ( 
+  render() {
+    const { navigate } = this.props.navigation;
+    return (
 
-            <Container>
-              {/* <Header hasTabs style={{backgroundColor:'#1d324d'}}> */}
-              <Header hasTabs>
+      <Container>
+        {/* <Header hasTabs style={{backgroundColor:'#1d324d'}}> */}
+        <Header hasTabs>
 
-      {/*         <Left>
+          {/*         <Left>
             <Button transparent  onPress={() => Actions.pop()}>
               <Icon active name="arrow-back" />
             </Button>
           </Left> */}
           <Body >
-              <Title color='white' >Event App</Title>
+            <Title color='white' >Event App</Title>
           </Body>
           <Right>
             <Menu
               ref={this.setMenuRef}
-                button={
-                 <TouchableOpacity onPress={this.showMenu}>
-                    <Image 
-                       source={require('../images/menu_icon.png')} 
-                       style={{width: 30, height: 30}} 
-              
-                    />
-                 </TouchableOpacity>
-            }>
-            <MenuItem onPress={this.option1Click}>Home</MenuItem>
-            <MenuItem onPress={this.option2Click}>Create Event</MenuItem>
-            <MenuItem onPress={this.option3Click}>Create Group</MenuItem>
-            <MenuItem onPress={this.option4Click}>Settings</MenuItem>
-            
-            {/* <MenuItem onPress={this.option3Click} disabled>
+              button={
+                <TouchableOpacity onPress={this.showMenu}>
+                  <Image
+                    source={require('../images/menu_icon.png')}
+                    style={{ width: 30, height: 30 }}
+
+                  />
+                </TouchableOpacity>
+              }>
+              <MenuItem onPress={this.option1Click}>Home</MenuItem>
+              <MenuItem onPress={this.option2Click}>Create Event</MenuItem>
+              <MenuItem onPress={this.option3Click}>Create Group</MenuItem>
+              <MenuItem onPress={this.option4Click}>Settings</MenuItem>
+
+              {/* <MenuItem onPress={this.option3Click} disabled>
              Disabled option
             </MenuItem> */}
-            <MenuDivider />
-            <MenuItem onPress={this.option5Click}>
-            Sign Out
+              <MenuDivider />
+              <MenuItem onPress={this.option5Click}>
+                Sign Out
             </MenuItem>
             </Menu>
           </Right>
-          </Header>
-                <Tabs>
-                  <Tab heading={ <TabHeading><Icon name="calendar" /><Text>Event</Text></TabHeading>}>
-                   <Tab1 />
-                  </Tab>
-                  <Tab heading={ <TabHeading><Icon name="contact" /><Text>Contact</Text></TabHeading>}>
-                   <Tab2 />
-                  </Tab>
-                  <Tab heading={ <TabHeading><Icon name="contacts" /><Text>Groups</Text></TabHeading>}>
-                   <Tab3 />
-                  </Tab>
-                 </Tabs>
-            </Container>
-         );
-    }
+        </Header>
+        <Tabs>
+          <Tab heading={<TabHeading><Icon name="calendar" /><Text>Event</Text></TabHeading>}>
+            <Tab1 navigation={this.props.navigation} />
+          </Tab>
+          <Tab heading={<TabHeading><Icon name="contact" /><Text>Contact</Text></TabHeading>}>
+            <Tab2 />
+          </Tab>
+          <Tab heading={<TabHeading><Icon name="contacts" /><Text>Groups</Text></TabHeading>}>
+            <Tab3 />
+          </Tab>
+        </Tabs>
+      </Container>
+    );
+  }
 }
- 
+
 export default TabContainer;
