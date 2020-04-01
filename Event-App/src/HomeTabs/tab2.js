@@ -13,7 +13,7 @@ import {
 import ContactsLib from 'react-native-contacts'
 import { styles } from './ContactStyles'
 import PropTypes from 'prop-types'
-
+import _ from 'lodash'
 
 import { Header } from 'react-native-elements';
 
@@ -111,7 +111,8 @@ export class Tab2 extends Component {
         listItem.id = index
       })
       this.setState({ contactList: arrFinal, isLoading: false })
-      this.arrayholder = arrFinal
+      this.arrayholder = _.sortBy(arrFinal, 'fullname')
+     
     })
   }
   getSelectedContacts = () => {
